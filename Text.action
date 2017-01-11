@@ -1,0 +1,9 @@
+# This is an action definition file, which has three parts: the goal, the
+# result, and the feedback.
+#
+# Part 1: the goal, to be sent by the client
+#
+# The amount of time we want to wait
+string text
+---
+---
