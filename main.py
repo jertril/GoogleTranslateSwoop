@@ -41,7 +41,7 @@ def text_to_speech(TextClass):
     server.set_succeeded('I did it, look at me!')
 
 rospy.init_node('voice')
-server = actionlib.SimpleActionServer('text_to_speech', Text, say, False)
+server = actionlib.SimpleActionServer('text_to_speech', TextToAction, say, False)
 
 server.start()
 rospy.spin()
