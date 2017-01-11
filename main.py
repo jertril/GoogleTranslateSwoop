@@ -3,6 +3,7 @@ import json
 import rospy
 import requests
 import actionlib
+import subprocess
 
 from pygame import mixer
 
@@ -19,6 +20,8 @@ def get_google_translate_token(text):
     else:
         raise "Token server is down."
 
+def play_mp3(path):
+    subprocess.Popen(['mpg123', '-q', path]).wait()
 
 def say(text):
 
@@ -31,10 +34,7 @@ def say(text):
         for chunk in response.iter_content(4096):
             fo.write(chunk)
 
-
-    mixer.init()
-    mixer.music.load(hash(text) + '.mp3')
-    mixer.music.play()
+    play_mp3(hash(text) + '.mp3')
 
 def text_to_speech(TextClass):
     say(TextClass.text)
