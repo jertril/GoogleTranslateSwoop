@@ -20,24 +20,20 @@ def get_google_translate_token(text):
         raise "Token server is down."
 
 
-def convert(name):
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-
-
 def say(text):
 
     response = requests.get('https://translate.google.com/translate_tts?ie=UTF-8&q=' + text + '&tl=en&total=' + str(len(text)) + '&idx=0&textlen=5&tk=' + get_google_translate_token(text) + '&client=t&prev=input', headers=headers)
 
     print('Downloading %s...' % (text))
 
-    with open(covert(text) +'.mp3', 'wb') as fo:
+    with open(hash(text) +'.mp3', 'wb') as fo:
 
         for chunk in response.iter_content(4096):
             fo.write(chunk)
 
 
     mixer.init()
-    mixer.music.load(covert(text) + '.mp3')
+    mixer.music.load(hash(text) + '.mp3')
     mixer.music.play()
 
 def text_to_speech(TextClass):
