@@ -45,5 +45,3 @@ server = actionlib.SimpleActionServer('text_to_speech', Text, say, False)
 
 server.start()
 rospy.spin()
-
-
